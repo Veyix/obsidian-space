@@ -1,3 +1,4 @@
-import runHelloWorld from "./app"
+import { Game } from "./game"
 
-runHelloWorld()
+const game = new Game()
+game.run()
