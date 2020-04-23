@@ -1,0 +1,26 @@
+{
+  "name": "obsidian-space",
+  "version": "1.0.0",
+  "description": "A simple game engine written in JavaScript and supporting custom middleware components.",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"webpack --mode=development\" \"http-server\"",
+    "build": "webpack --mode=production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Veyix/obsidian-space.git"
+  },
+  "author": "Samuel Slade",
+  "license": "GNU",
+  "bugs": {
+    "url": "https://github.com/Veyix/obsidian-space/issues"
+  },
+  "homepage": "https://github.com/Veyix/obsidian-space#readme",
+  "devDependencies": {
+    "concurrently": "^5.1.0",
+    "http-server": "^0.12.1",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  }
+}
