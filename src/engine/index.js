@@ -1,1 +1,1 @@
-export { default as GameEngine } from "./GameEngine"
+export { default as gameEngine } from "./GameEngine"

@@ -4,8 +4,7 @@
   "description": "A simple game engine written in JavaScript and supporting custom middleware components.",
   "main": "index.js",
   "scripts": {
-    "start:dev": "webpack-dev-server --output-path ./public/dist/",
-    "start": "concurrently \"webpack --mode=development\" \"http-server\"",
+    "start": "webpack-dev-server --output-path ./public/dist/",
     "build": "webpack --mode=production"
   },
   "repository": {
