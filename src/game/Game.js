@@ -1,7 +1,6 @@
 import { gameEngine } from "../engine"
 import ClearCanvasSystem from "./ClearCanvasSystem"
 import DrawSquareSystem from "./DrawSquareSystem"
-import Entity from "./Entity"
 
 export default class Game {
   constructor(canvas) {
@@ -12,17 +11,14 @@ export default class Game {
   }
 
   run() {
-    const smallSquare = new Entity()
-    smallSquare.addComponent("position", { x: 10, y: 10 })
-    smallSquare.addComponent("size", { width: 100, height: 100 })
+    gameEngine.createEntity()
+      .addComponent("position", { x: 10, y: 10 })
+      .addComponent("size", { width: 100, height: 100 })
 
-    const blueSquare = new Entity()
-    blueSquare.addComponent("position", { x: 10, y: 110 })
-    blueSquare.addComponent("size", { width: 200, height: 200 })
-    blueSquare.addComponent("color", "blue")
-
-    gameEngine.registerEntity(smallSquare)
-    gameEngine.registerEntity(blueSquare)
+    gameEngine.createEntity()
+      .addComponent("position", { x: 10, y: 110 })
+      .addComponent("size", { width: 200, height: 200 })
+      .addComponent("color", "blue")
 
     gameEngine.start()
   }

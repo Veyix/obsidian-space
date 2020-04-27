@@ -5,6 +5,8 @@ export default class Entity {
 
   addComponent(name, component) {
     this.components[name] = component
+
+    return this
   }
 
   getComponent(name) {

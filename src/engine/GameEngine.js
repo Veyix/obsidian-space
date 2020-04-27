@@ -1,4 +1,5 @@
 import DrawingContext from "./DrawingContext"
+import Entity from "./Entity"
 
 let drawingContext = null
 
@@ -47,8 +48,11 @@ const gameEngine = {
     }
   },
 
-  registerEntity(entity) {
+  createEntity() {
+    const entity = new Entity()
     entities.push(entity)
+
+    return entity
   },
 
   start() {
