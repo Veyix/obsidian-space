@@ -7,13 +7,8 @@ const drawSquare = ({ position, size, color }, context) => {
 }
 
 export default class DrawSquareSystem {
-  constructor(canvas) {
-    this.canvas = canvas
-    this.context = canvas.getContext("2d")
-  }
-
-  draw(elapsed, entities) {
+  draw({ canvasRenderingContext }, entities) {
     entities.filter(entity => entity.position && entity.size)
-      .forEach(entity => drawSquare(entity, this.context))
+      .forEach(entity => drawSquare(entity, canvasRenderingContext))
   }
 }

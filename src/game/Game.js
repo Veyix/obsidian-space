@@ -5,8 +5,10 @@ import Square from "./Square"
 
 export default class Game {
   constructor(canvas) {
-    gameEngine.use(new ClearCanvasSystem(canvas))
-    gameEngine.use(new DrawSquareSystem(canvas))
+    gameEngine.setCanvas(canvas)
+
+    gameEngine.use(new ClearCanvasSystem())
+    gameEngine.use(new DrawSquareSystem())
   }
 
   run() {
