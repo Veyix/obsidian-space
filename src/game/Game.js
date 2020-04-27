@@ -1,31 +1,18 @@
 import { gameEngine } from "../engine"
-
-const initSystem = {
-  init() {
-    console.log("INIT SYSTEM")
-  }
-}
-
-const updateSystem = {
-  update(elapsed) {
-    console.log(`UPDATE SYSTEM: elapsed = ${elapsed}`)
-  }
-}
-
-const drawSystem = {
-  draw(elapsed) {
-    console.log(`DRAW SYSTEM: elapsed = ${elapsed}`)
-  }
-}
+import ClearCanvasSystem from "./ClearCanvasSystem"
+import DrawSquareSystem from "./DrawSquareSystem"
+import Square from "./Square"
 
 export default class Game {
-  constructor() {
-    gameEngine.use(initSystem)
-    gameEngine.use(updateSystem)
-    gameEngine.use(drawSystem)
+  constructor(canvas) {
+    gameEngine.use(new ClearCanvasSystem(canvas))
+    gameEngine.use(new DrawSquareSystem(canvas))
   }
 
   run() {
+    gameEngine.registerEntity(new Square(10, 10, 100, 100))
+    gameEngine.registerEntity(new Square(10, 110, 200, 200, "blue"))
+
     gameEngine.start()
   }
 }

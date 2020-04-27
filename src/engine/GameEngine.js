@@ -1,15 +1,18 @@
 const initializationSystems = []
 const updateSystems = []
 const drawSystems = []
+const entities = []
 
 let lastTimestamp = 0
 let loopHandle = 0
   
-const init = () =>initializationSystems.forEach(system => system.init())
+const init = () => {
+  initializationSystems.forEach(system => system.init())
+}
 
-const update = (elapsed) => updateSystems.forEach(system => system.update(elapsed))
+const update = (elapsed) => updateSystems.forEach(system => system.update(elapsed, entities))
 
-const draw = (elapsed) => drawSystems.forEach(system => system.draw(elapsed))
+const draw = (elapsed) => drawSystems.forEach(system => system.draw(elapsed, entities))
 
 const scheduleLoop = () => loopHandle = window.requestAnimationFrame(loop)
 
@@ -36,6 +39,10 @@ const gameEngine = {
     if (system.draw) {
       drawSystems.push(system)
     }
+  },
+
+  registerEntity(entity) {
+    entities.push(entity)
   },
 
   start() {

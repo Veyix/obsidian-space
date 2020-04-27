@@ -1,4 +1,6 @@
 import { Game } from "./game"
 
-const game = new Game()
+const canvas = document.getElementById("canvas")
+
+const game = new Game(canvas)
 game.run()
