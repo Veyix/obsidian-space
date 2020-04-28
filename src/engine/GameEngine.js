@@ -1,5 +1,6 @@
 import GameContext from "./GameContext"
 import Entity from "./Entity"
+import keyboard from "./Keyboard"
 
 let gameContext = null
 
@@ -46,6 +47,7 @@ const gameEngine = {
       throw new Error("Game Engine has not been initialized")
     }
 
+    keyboard.initialize()
     scheduleLoop()
   },
 

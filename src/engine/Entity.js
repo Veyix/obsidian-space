@@ -12,4 +12,8 @@ export default class Entity {
   getComponent(name) {
     return this.components[name]
   }
+
+  hasComponent(name) {
+    return !this.getComponent(name)
+  }
 }
