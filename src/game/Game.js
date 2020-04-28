@@ -4,7 +4,7 @@ import { createSquare } from "./entities"
 
 export default class Game {
   constructor(canvas) {
-    gameEngine.setCanvas(canvas)
+    gameEngine.initialize(canvas)
 
     gameEngine.use(new ClearCanvasSystem())
     gameEngine.use(new DrawSquareSystem())

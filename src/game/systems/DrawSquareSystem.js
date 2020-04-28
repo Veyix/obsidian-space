@@ -7,8 +7,8 @@ const drawSquare = ({ position, size, color }, context) => {
 }
 
 export default class DrawSquareSystem {
-  draw({ canvasRenderingContext }, entities) {
+  execute({ drawContext }, entities) {
     entities.filter(entity => entity.components.position && entity.components.size)
-      .forEach(entity => drawSquare(entity.components, canvasRenderingContext))
+      .forEach(entity => drawSquare(entity.components, drawContext))
   }
 }

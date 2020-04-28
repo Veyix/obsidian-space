@@ -1,9 +1,9 @@
 export default class ClearCanvasSystem {
-  draw({ canvas, canvasRenderingContext }) {
-    canvasRenderingContext.beginPath()
-    canvasRenderingContext.fillStyle = "black"
+  execute({ canvas, drawContext }) {
+    drawContext.beginPath()
+    drawContext.fillStyle = "black"
 
-    canvasRenderingContext.fillRect(0, 0, canvas.width, canvas.height)
-    canvasRenderingContext.closePath()
+    drawContext.fillRect(0, 0, canvas.width, canvas.height)
+    drawContext.closePath()
   }
 }
