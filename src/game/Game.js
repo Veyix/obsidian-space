@@ -7,8 +7,8 @@ export default class Game {
     gameEngine.initialize(canvas)
 
     gameEngine.use(new ClearCanvasSystem())
-    gameEngine.use(new DrawSquareSystem())
     gameEngine.use(new KeyboardMovementSystem())
+    gameEngine.use(new DrawSquareSystem())
   }
 
   run() {
