@@ -4,13 +4,40 @@ import keyboard from "./Keyboard"
 
 let gameContext = null
 
-const systems = []
+let systems = []
+let systemErrors = {}
 const entities = []
 
 let lastTimestamp = 0
 let loopHandle = 0
   
-const execute = (elapsed) => systems.forEach(system => system.execute(gameContext, entities, elapsed))
+const execute = (elapsed) =>
+  systems.filter(system => !system.deleted)
+    .forEach((system, systemIndex) => {
+      try {
+        system.execute(gameContext, entities, elapsed)
+      }
+      catch (error) {
+        console.error(error)
+
+        const errorKey = systemIndex.toString()
+        if (!systemErrors[errorKey]) {
+          systemErrors[errorKey] = 0
+        }
+
+        systemErrors[errorKey]++
+
+        if (systemErrors[errorKey] >= 10) {
+
+          // This system keeps failing, so mark it as deleted so we don't execute it anymore
+          system.deleted = true
+
+          console.warn("System failed too many times so it was removed")
+        }
+
+        // TODO: Log game errors somewhere.
+      }
+    })
 
 const scheduleLoop = () => loopHandle = window.requestAnimationFrame(loop)
 

@@ -2,30 +2,33 @@ import { keyboard } from "../../engine"
 
 export default class KeyboardMovementSystem {
   execute(_, entities) {
-    const pressedKeys = keyboard.getPressedKeys()
+    for (let entityIndex = 0; entityIndex < entities.length; entityIndex++) {
+      const entity = entities[entityIndex]
 
-    entities.forEach(entity => {
+      const keyboardComponent = entity.components.keyboard
+      const position = entity.components.position
 
-      const keyboard = entity.getComponent("keyboard")
-      if (!keyboard) {
-        return
+      if (!keyboardComponent || !position) {
+        continue
       }
 
-      keyboard.watchedKeys.forEach(key => {
-        if (pressedKeys.indexOf(key) < 0) {
-          return
+      for (let keyIndex = 0; keyIndex < keyboardComponent.watchedKeys.length; keyIndex++) {
+        const keyCode = keyboardComponent.watchedKeys[keyIndex]
+
+        if (!keyboard.isKeyPressed(keyCode)) {
+          continue
         }
 
-        const movement = entity.getComponent(key.toString())
-        const position = entity.components.position
-
-        if (!movement || !position) {
-          return
+        const movement = entity.getComponent(keyCode.toString())
+        if (!movement) {
+          continue
         }
-      
+
         position.x += movement.velocity.x
         position.y += movement.velocity.y
-      })
-    })
+
+        break
+      }
+    }
   }
 }

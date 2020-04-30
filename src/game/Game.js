@@ -1,4 +1,4 @@
-import { gameEngine } from "../engine"
+import { gameEngine, KeyboardSystem } from "../engine"
 import { ClearCanvasSystem, DrawSquareSystem, KeyboardMovementSystem } from "./systems"
 import { createSquare } from "./entities"
 
@@ -6,8 +6,12 @@ export default class Game {
   constructor(canvas) {
     gameEngine.initialize(canvas)
 
-    gameEngine.use(new ClearCanvasSystem())
+    // Update systems
+    gameEngine.use(new KeyboardSystem())
     gameEngine.use(new KeyboardMovementSystem())
+
+    // Draw systems
+    gameEngine.use(new ClearCanvasSystem())
     gameEngine.use(new DrawSquareSystem())
   }
 
