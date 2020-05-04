@@ -1,12 +1,13 @@
 import GameContext from "./GameContext"
 import Entity from "./Entity"
 import keyboard from "./Keyboard"
+import EntitySet from "./EntitySet"
 
 let gameContext = null
 
 let systems = []
 let systemErrors = {}
-const entities = []
+const entitySet = new EntitySet()
 
 let lastTimestamp = 0
 let loopHandle = 0
@@ -15,7 +16,7 @@ const execute = (elapsed) =>
   systems.filter(system => !system.deleted)
     .forEach((system, systemIndex) => {
       try {
-        system.execute(gameContext, entities, elapsed)
+        system.execute(gameContext, entitySet, elapsed)
       }
       catch (error) {
         console.error(error)
@@ -64,7 +65,7 @@ const gameEngine = {
 
   createEntity() {
     const entity = new Entity()
-    entities.push(entity)
+    entitySet.entities.push(entity)
 
     return entity
   },

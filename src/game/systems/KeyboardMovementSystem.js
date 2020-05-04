@@ -1,16 +1,11 @@
 import { keyboard } from "../../engine"
 
 export default class KeyboardMovementSystem {
-  execute(_, entities) {
-    for (let entityIndex = 0; entityIndex < entities.length; entityIndex++) {
-      const entity = entities[entityIndex]
+  execute(_, entitySet) {
+    const entities = entitySet.query("keyboard", "position")
 
+    entities.forEach(entity => {
       const keyboardComponent = entity.components.keyboard
-      const position = entity.components.position
-
-      if (!keyboardComponent || !position) {
-        continue
-      }
 
       for (let keyIndex = 0; keyIndex < keyboardComponent.watchedKeys.length; keyIndex++) {
         const keyCode = keyboardComponent.watchedKeys[keyIndex]
@@ -24,11 +19,11 @@ export default class KeyboardMovementSystem {
           continue
         }
 
-        position.x += movement.velocity.x
-        position.y += movement.velocity.y
+        entity.components.position.x += movement.velocity.x
+        entity.components.position.y += movement.velocity.y
 
         break
       }
-    }
+    })
   }
 }

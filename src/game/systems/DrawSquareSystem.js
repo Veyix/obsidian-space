@@ -7,8 +7,8 @@ const drawSquare = ({ position, size, color }, context) => {
 }
 
 export default class DrawSquareSystem {
-  execute({ drawContext }, entities) {
-    entities.filter(entity => entity.components.position && entity.components.size)
+  execute({ drawContext }, entitySet) {
+    entitySet.query("position", "size", { name: "color", optional: true })
       .forEach(entity => drawSquare(entity.components, drawContext))
   }
 }
