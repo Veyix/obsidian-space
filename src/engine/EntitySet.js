@@ -6,11 +6,15 @@ export default class EntitySet {
   query(...components) {
     return this.entities.filter(entity => {
       for (let i = 0; i < components.length; i++) {
-        const component = components[i]
-        const componentName = component.name || component
-        
-        return component.optional === true || !!entity.getComponent(componentName)
+        if (!entity.getComponent(components[i])) {
+
+          // One of the components are missing
+          return false
+        }
       }
+
+      // All components are present on the entity
+      return true
     })
   }
 }
