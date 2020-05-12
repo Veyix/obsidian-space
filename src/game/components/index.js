@@ -1,4 +1,6 @@
 export { default as KeyboardInput } from "./KeyboardInput"
+export * from "./Matrix"
 export { default as Movement } from "./Movement"
 export { default as Position } from "./Position"
 export { default as Size } from "./Size"
+export { default as Viewport } from "./Viewport"
