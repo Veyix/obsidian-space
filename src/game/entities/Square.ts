@@ -1,7 +1,9 @@
 import { gameEngine, keys } from "../../engine"
 import { KeyboardInput, Movement, Position, Size } from "../components"
 
-export default function createSquare(x, y, sideLength, color, moveable) {
+export default function createSquare(x: number, y: number,
+  sideLength: number, color?: string, moveable: boolean = false) {
+
   const square = gameEngine.createEntity()
     .addComponent("position", new Position(x, y))
     .addComponent("size", new Size(sideLength, sideLength))

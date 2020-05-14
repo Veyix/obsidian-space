@@ -1,4 +1,4 @@
-function multiply(matrix, x, y) {
+function multiply(matrix: any, x: any, y: any) {
   const vector = [x, y, 0, 0]
   const resultVector = []
 
@@ -22,11 +22,10 @@ function multiply(matrix, x, y) {
 }
 
 export default class Matrix {
-  constructor(matrix) {
-    this.matrix = matrix
+  constructor(private matrix: any) {
   }
 
-  transform({ x, y }) {
+  transform({ x, y }: any) {
     const resultX = (x * this.matrix[0][0]) + (y * this.matrix[1][0]) + this.matrix[3][0]
     const resultY = (x * this.matrix[0][1]) + (y * this.matrix[1][1]) + this.matrix[3][1]
 
@@ -37,7 +36,7 @@ export default class Matrix {
   }
 }
 
-export function createTranslationMatrix({ x, y }) {
+export function createTranslationMatrix({ x, y }: any) {
   return new Matrix([
     [1, 0, 0, 0],
     [0, 1, 0, 0],

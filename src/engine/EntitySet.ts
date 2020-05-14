@@ -1,7 +1,5 @@
 export default class EntitySet {
-  constructor() {
-    this.entities = []
-  }
+  public readonly entities = []
 
   query(...components) {
     return this.entities.filter(entity => {

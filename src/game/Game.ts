@@ -4,9 +4,7 @@ import { createSquare } from "./entities"
 import createCamera from "./entities/Camera"
 
 export default class Game {
-  constructor(canvas) {
-    this.canvas = canvas
-
+  constructor(private readonly canvas) {
     gameEngine.initialize(canvas)
 
     // Update systems

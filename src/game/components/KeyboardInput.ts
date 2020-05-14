@@ -1,5 +1,7 @@
 export default class KeyboardInput {
-  constructor(watchedKeys) {
+  public readonly watchedKeys: number[]
+
+  constructor(watchedKeys: number[]) {
     this.watchedKeys = watchedKeys || []
   }
 }

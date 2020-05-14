@@ -1,6 +1,7 @@
 export default class GameContext {
-  constructor(canvas) {
-    this.canvas = canvas
+  public readonly drawContext
+
+  constructor(public readonly canvas) {
     this.drawContext = canvas.getContext("2d")
   }
 }
