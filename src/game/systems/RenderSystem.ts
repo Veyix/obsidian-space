@@ -1,3 +1,6 @@
+import { Vector2, translate } from "../../math"
+import Matrix from "../components/Matrix"
+
 const drawSquare = ({ position, size, color }, context) => {
   context.beginPath()
   context.fillStyle = color || "red"
@@ -17,8 +20,9 @@ export default class RenderSystem {
     const renderables = entitySet.query("position", "size")
 
     renderables.forEach(renderable => {
-      const worldPosition = renderable.components.position
-      const screenPosition = camera.components.projection.transform(worldPosition)
+      const worldPosition = <Vector2>renderable.components.position
+      const projectionMatrix = <Matrix>camera.components.projection
+      const screenPosition = translate(worldPosition, projectionMatrix.matrix)
 
       drawSquare({
         ...renderable.components,
