@@ -68,4 +68,10 @@ export default class Matrix4 {
   public get m44(): number {
     return this.values[15]
   }
+
+  public reset(matrix: Matrix4) {
+    for (let i = 0; i < this.values.length; i++) {
+      this.values[i] = matrix.values[i]
+    }
+  }
 }

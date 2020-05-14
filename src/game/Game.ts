@@ -9,6 +9,8 @@ export default class Game {
 
     // Update systems
     gameEngine.use(new KeyboardSystem())
+    gameEngine.use(new systems.CameraMovementSystem())
+    gameEngine.use(new systems.CameraTranslationSystem())
     gameEngine.use(new systems.KeyboardMovementSystem())
 
     // Draw systems

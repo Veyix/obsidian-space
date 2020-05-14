@@ -1,5 +1,5 @@
 export default class Entity {
-  private readonly components: any = {}
+  public readonly components: any = {}
 
   addComponent(name, component) {
     this.components[name] = component

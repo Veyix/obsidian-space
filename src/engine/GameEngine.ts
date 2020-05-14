@@ -63,7 +63,7 @@ const gameEngine = {
     systems.push(system)
   },
 
-  createEntity() {
+  createEntity(): Entity {
     const entity = new Entity()
     entitySet.entities.push(entity)
 
